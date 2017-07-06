@@ -16,46 +16,58 @@ class LiveGQL {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
         self.socket.delegate = self
         self.socket.connect()
-        if let connectMessage = OperationMessage(payload: nil,
-                                                 id: nil,
-                                                 type: MessageTypes.GQL_CONNECTION_INIT.rawValue).toJSON() {
-            if socket.isConnected {
-                socket.write(string: connectMessage)
-            } else {
-                print("LiveGQL: Can't connect to the WebSocket server.")
-            }
-        }
     }
     
-    private func sendMessage(message: OperationMessage) {
-        if let serializedMessage = message.toJSON() {
+    private func sendMessage(_ message: OperationMessage) {
+        do {
+            let serializedMessage = try message.toJSONString()
             if socket.isConnected {
                 socket.write(string: serializedMessage)
             }
+        } catch {
+            print(error)
         }
     }
     
-    public func subscribe(graphql query: String, name: String) {
-        let unserializedMessage = OperationMessage(payload: Payload(query: query,
-                                                                    variables: nil,
-                                                                    operationName: nil),
-                                                   id: name,
-                                                   type: MessageTypes.GQL_START.rawValue)
-        self.sendMessage(message: unserializedMessage)
+    public func initServer() {
+        let unserializedMessage = OperationMessage(
+            payload: nil,
+            id: nil,
+            type: MessageTypes.GQL_CONNECTION_INIT.rawValue)
+        self.sendMessage(unserializedMessage)
     }
     
-    public func unsubscribe(subscribtion name: String) {
-        let unserializedMessage = OperationMessage(payload: nil,
-                                                   id: name,
-                                                   type: MessageTypes.GQL_STOP.rawValue)
-        self.sendMessage(message: unserializedMessage)
+    public func subscribe(graphql query: String, identifier: String) {
+        let unserializedMessage = OperationMessage(
+            payload: Payload(query: query,
+                             variables: nil,
+                             operationName: nil),
+            id: identifier,
+            type: MessageTypes.GQL_START.rawValue
+        )
+        self.sendMessage(unserializedMessage)
+    }
+    
+    public func unsubscribe(subscribtion identifier: String) {
+        let unserializedMessage = OperationMessage(
+            payload: nil,
+            id: identifier,
+            type: MessageTypes.GQL_STOP.rawValue
+        )
+        self.sendMessage(unserializedMessage)
     }
     
     public func closeConnection() {
-        let unserializedMessage = OperationMessage(payload: nil,
-                                                   id: nil,
-                                                   type: MessageTypes.GQL_CONNECTION_TERMINATE.rawValue)
-        self.sendMessage(message: unserializedMessage)
+        let unserializedMessage = OperationMessage(
+            payload: nil,
+            id: nil,
+            type: MessageTypes.GQL_CONNECTION_TERMINATE.rawValue
+        )
+        self.sendMessage(unserializedMessage)
+    }
+    
+    public func isConnected() -> Bool {
+        return socket.isConnected
     }
     
     deinit {
@@ -74,10 +86,12 @@ extension LiveGQL : WebSocketDelegate {
     }
     
     public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
+        print("Message received")
         print(text)
     }
     
     public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
+        print("Data received")
         print(data)
     }
 }

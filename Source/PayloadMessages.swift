@@ -7,15 +7,28 @@
 //
 
 import Foundation
+import JSONCodable
 
-struct Payload: JSONSerializable {
+struct OperationMessage {
+    var payload: Payload?
+    let id: String?
+    let type: String?
+}
+
+struct Payload {
     let query: String
     let variables: String?
     let operationName: String?
 }
 
-struct OperationMessage : JSONSerializable{
-    let payload: JSONSerializable?
-    let id: String?
-    let type: String?
+extension OperationMessage: JSONEncodable {
+    func toJSON() throws -> Any {
+        return try JSONEncoder.create({ (encoder) -> Void in
+            try encoder.encode(payload, key: "payload")
+            try encoder.encode(id, key: "id")
+            try encoder.encode(type, key: "type")
+        })
+    }
 }
+
+extension Payload: JSONEncodable {}
