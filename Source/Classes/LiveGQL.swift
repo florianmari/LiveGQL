@@ -9,7 +9,7 @@
 import Foundation
 import Starscream
 
-class LiveGQL {
+open class LiveGQL {
     public var socket: WebSocket
     
     init(socket url: String) {
