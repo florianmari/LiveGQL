@@ -14,9 +14,9 @@ LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket.
 - [x] Send messages
 - [x] Subscribe / unsubscribe
 - [x] Close connection
-- [] Data handling (delegate)
-- [] Error handling
-- [] Implement all protocol
+- [ ] Data handling (delegate)
+- [ ] Error handling
+- [ ] Implement all protocol
 
 ## Requirements
 
