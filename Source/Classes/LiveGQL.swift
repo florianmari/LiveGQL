@@ -12,7 +12,7 @@ import Starscream
 open class LiveGQL {
     public var socket: WebSocket
     
-    init(socket url: String) {
+    public init(socket url: String) {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
         self.socket.delegate = self
         self.socket.connect()
