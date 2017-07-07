@@ -21,6 +21,16 @@ struct Payload {
     let operationName: String?
 }
 
+struct PayloadServer {
+    let message: String?
+}
+
+struct OperationMessageServer {
+    var payload: PayloadServer?
+    let id: String?
+    let type: String?
+}
+
 extension OperationMessage: JSONEncodable {
     func toJSON() throws -> Any {
         return try JSONEncoder.create({ (encoder) -> Void in
@@ -32,3 +42,19 @@ extension OperationMessage: JSONEncodable {
 }
 
 extension Payload: JSONEncodable {}
+
+extension OperationMessageServer: JSONDecodable {
+    init(object: JSONObject) throws {
+        let decoder = JSONDecoder(object: object)
+        payload = try decoder.decode("payload")
+        id = try decoder.decode("id")
+        type = try decoder.decode("type")
+    }
+}
+
+extension PayloadServer: JSONDecodable {
+    init(object: JSONObject) throws {
+        let decoder = JSONDecoder(object: object)
+        message = try decoder.decode("message")
+    }
+}

@@ -8,9 +8,11 @@
 
 import Foundation
 import Starscream
+import JSONCodable
 
 open class LiveGQL {
-    public var socket: WebSocket
+    private(set) var socket: WebSocket
+    weak var delegate: LiveGQLDelegate?
     
     public init(socket url: String) {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
@@ -27,6 +29,10 @@ open class LiveGQL {
         } catch {
             print(error)
         }
+    }
+    
+    fileprivate func errorHandler(_ message: String) {
+        
     }
     
     public func initServer() {
@@ -82,16 +88,19 @@ extension LiveGQL : WebSocketDelegate {
     }
     
     public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
-        print("LiveGQL: Disconnected", error ?? "no error")
     }
     
     public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
-        print("Message received")
-        print(text)
+        self.errorHandler(text)
+        self.delegate?.receivedMessage(text: text)
     }
     
     public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
         print("Data received")
         print(data)
     }
+}
+
+protocol LiveGQLDelegate: class {
+    func receivedMessage(text: String)
 }
