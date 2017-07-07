@@ -2,7 +2,7 @@
 
 LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [Apollo Protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md).
 
-*Hello folks! I made this simple prototype of a future complete library, you can try it now and see in your console how does it work! I will provide a fully functionnal version (for data handling and full protocol implemented) next week!*
+*Hello folks! I made this simple prototype of a future complete library, you can try it now and see in your console how does it work! I will provide a fully functionnal version next week! But it's ready to use in development*
 
 - [Features](#features)
 - [Requirements](#requirements)
