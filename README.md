@@ -9,6 +9,7 @@ LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [A
 - [Communication](#communication)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Bugs](#bugs)
 
 ## Features
 
@@ -77,7 +78,27 @@ Just call subscribe method, set an identifier and your subscription query as wel
 gql.subscribe(graphql: "subscription {feedbackAdded {id, text}}", identifier: "feed")
 ```
 
-You can't treat properly server message now, it will come in the next version, this is just a first preview of implementation, you can see result in the console.
+##### Treat server response
+
+You have to implement delegate method, in your main ViewController (for example) just att that
+
+```swift
+override func viewDidLoad() {
+        super.viewDidLoad()
+        gql.delegate = self
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+```
+
+Below your class add the folowing extension and implement the method:
+
+```swift
+extension ViewController: LiveGQLDelegate {
+    func receivedMessage(text: String) {
+        print("Received Message: \(text)")
+    }
+}
+```
 
 #### Unsubscribe
 
@@ -92,3 +113,11 @@ gql.unsubscribe(subscribtion: "feed")
 ```swift
 gql.closeConnection()
 ```
+
+## Bugs
+
+Bugs I know:
+
+- I don't verify if the initMessage (initServer()) has been sent (if it hasn't subscribe doesn't work)
+- closeConnection() may be bug
+- Error are not handled but your app won't crash (because it's on the stream ;))
