@@ -12,7 +12,7 @@ import JSONCodable
 
 open class LiveGQL {
     private(set) var socket: WebSocket
-    weak var delegate: LiveGQLDelegate?
+    public weak var delegate: LiveGQLDelegate?
     
     public init(socket url: String) {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
@@ -101,6 +101,6 @@ extension LiveGQL : WebSocketDelegate {
     }
 }
 
-protocol LiveGQLDelegate: class {
+public protocol LiveGQLDelegate: class {
     func receivedMessage(text: String)
 }

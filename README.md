@@ -16,9 +16,10 @@ LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [A
 - [x] Send messages
 - [x] Subscribe / unsubscribe
 - [x] Close connection
-- [ ] Data handling (delegate)
+- [x] Data handling (delegate)
 - [ ] Error handling
-- [ ] Implement all protocol
+- [ ] JSON parsing
+- [ ] Implement all Apollo protocol (today just Client part totally implemented)
 
 ## Requirements
 
@@ -43,7 +44,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiveGQL'
+    pod 'LiveGQL', '~> 0.0.3'
 end
 ```
 
