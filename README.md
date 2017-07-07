@@ -1,4 +1,4 @@
-![LiveGQL: Use GraphQL Websocket subscription in Swift](http://i.imgur.com/kW0Mtet.png)
+![LiveGQL: Use GraphQL Websocket subscription in Swift](http://i.imgur.com/2hFD4w3.png)
 
 LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [Apollo Protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md).
 
