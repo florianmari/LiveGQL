@@ -28,7 +28,7 @@ LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [A
 - Xcode >= 8.1
 - Swift >= 3.0
 
-We also use [Starscream](https://github.com/daltoniam/Starscream) and [JSONCodable](https://github.com/matthewcheok/JSONCodable), thank you them
+We also use [Starscream](https://github.com/daltoniam/Starscream) and [JSONCodable](https://github.com/matthewcheok/JSONCodable), thanks to them
 
 ## Communication
 
