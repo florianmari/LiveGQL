@@ -11,7 +11,7 @@
 		D2B7E5FB1F12C82400FCFC91 /* LiveGQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */; };
 		D2B7E6091F12C88E00FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2B7E6171F12C8BF00FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2B7E6321F12C98000FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2B7E64C1F12CE5200FCFC91 /* LiveGQL.h in Frameworks */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		D2B7E5EF1F12C6FB00FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7E6011F12C84B00FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7E60F1F12C8AF00FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2B7E62A1F12C91900FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7E6441F12CDD000FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,10 +48,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2B7E6261F12C91900FCFC91 /* Frameworks */ = {
+		D2B7E6401F12CDD000FCFC91 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B7E64C1F12CE5200FCFC91 /* LiveGQL.h in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +73,7 @@
 				D2B7E5EF1F12C6FB00FCFC91 /* LiveGQL.framework */,
 				D2B7E6011F12C84B00FCFC91 /* LiveGQL.framework */,
 				D2B7E60F1F12C8AF00FCFC91 /* LiveGQL.framework */,
-				D2B7E62A1F12C91900FCFC91 /* LiveGQL.framework */,
+				D2B7E6441F12CDD000FCFC91 /* LiveGQL.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,7 +94,7 @@
 				D285F86F1F12C3C500116FA1 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			path = "../Source/Supporting Files";
+			path = "Source/Supporting Files";
 			sourceTree = "<group>";
 		};
 		D285F8771F12C3DC00116FA1 /* Sources */ = {
@@ -133,11 +134,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2B7E6271F12C91900FCFC91 /* Headers */ = {
+		D2B7E6411F12CDD000FCFC91 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7E6321F12C98000FCFC91 /* LiveGQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,14 +198,14 @@
 			productReference = D2B7E60F1F12C8AF00FCFC91 /* LiveGQL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D2B7E6291F12C91900FCFC91 /* LiveGQL-macOS */ = {
+		D2B7E6431F12CDD000FCFC91 /* LiveGQL-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2B7E62F1F12C91900FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-macOS" */;
+			buildConfigurationList = D2B7E6491F12CDD000FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-macOS" */;
 			buildPhases = (
-				D2B7E6251F12C91900FCFC91 /* Sources */,
-				D2B7E6261F12C91900FCFC91 /* Frameworks */,
-				D2B7E6271F12C91900FCFC91 /* Headers */,
-				D2B7E6281F12C91900FCFC91 /* Resources */,
+				D2B7E63F1F12CDD000FCFC91 /* Sources */,
+				D2B7E6401F12CDD000FCFC91 /* Frameworks */,
+				D2B7E6411F12CDD000FCFC91 /* Headers */,
+				D2B7E6421F12CDD000FCFC91 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -213,7 +213,7 @@
 			);
 			name = "LiveGQL-macOS";
 			productName = "LiveGQL-macOS";
-			productReference = D2B7E62A1F12C91900FCFC91 /* LiveGQL.framework */;
+			productReference = D2B7E6441F12CDD000FCFC91 /* LiveGQL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -237,7 +237,7 @@
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
-					D2B7E6291F12C91900FCFC91 = {
+					D2B7E6431F12CDD000FCFC91 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
@@ -258,7 +258,7 @@
 				D2B7E5EE1F12C6FB00FCFC91 /* LiveGQL-iOS */,
 				D2B7E6001F12C84B00FCFC91 /* LiveGQL-watchOS */,
 				D2B7E60E1F12C8AF00FCFC91 /* LiveGQL-tvOS */,
-				D2B7E6291F12C91900FCFC91 /* LiveGQL-macOS */,
+				D2B7E6431F12CDD000FCFC91 /* LiveGQL-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -285,7 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2B7E6281F12C91900FCFC91 /* Resources */ = {
+		D2B7E6421F12CDD000FCFC91 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -317,7 +317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2B7E6251F12C91900FCFC91 /* Sources */ = {
+		D2B7E63F1F12CDD000FCFC91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -550,47 +550,47 @@
 			};
 			name = Release;
 		};
-		D2B7E6301F12C91900FCFC91 /* Debug */ = {
+		D2B7E64A1F12CDD000FCFC91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.florian.LiveGQL-macOS";
 				PRODUCT_NAME = LiveGQL;
-				SDKROOT = watchos;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
 			name = Debug;
 		};
-		D2B7E6311F12C91900FCFC91 /* Release */ = {
+		D2B7E64B1F12CDD000FCFC91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.florian.LiveGQL-macOS";
 				PRODUCT_NAME = LiveGQL;
-				SDKROOT = watchos;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
 			name = Release;
 		};
@@ -613,6 +613,7 @@
 				D2B7E5F61F12C6FB00FCFC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2B7E6061F12C84B00FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-watchOS" */ = {
 			isa = XCConfigurationList;
@@ -621,6 +622,7 @@
 				D2B7E6081F12C84B00FCFC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2B7E6141F12C8AF00FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -629,12 +631,13 @@
 				D2B7E6161F12C8AF00FCFC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		D2B7E62F1F12C91900FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-macOS" */ = {
+		D2B7E6491F12CDD000FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2B7E6301F12C91900FCFC91 /* Debug */,
-				D2B7E6311F12C91900FCFC91 /* Release */,
+				D2B7E64A1F12CDD000FCFC91 /* Debug */,
+				D2B7E64B1F12CDD000FCFC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

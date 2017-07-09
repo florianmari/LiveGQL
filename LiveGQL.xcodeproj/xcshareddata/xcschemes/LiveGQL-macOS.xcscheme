@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2B7E6291F12C91900FCFC91"
-               BuildableName = "LiveGQL.framework"
+               BlueprintIdentifier = "D2B7E6431F12CDD000FCFC91"
+               BuildableName = "LiveGQL-macOS.framework"
                BlueprintName = "LiveGQL-macOS"
                ReferencedContainer = "container:LiveGQL.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B7E6291F12C91900FCFC91"
-            BuildableName = "LiveGQL.framework"
+            BlueprintIdentifier = "D2B7E6431F12CDD000FCFC91"
+            BuildableName = "LiveGQL-macOS.framework"
             BlueprintName = "LiveGQL-macOS"
             ReferencedContainer = "container:LiveGQL.xcodeproj">
          </BuildableReference>
@@ -63,8 +63,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B7E6291F12C91900FCFC91"
-            BuildableName = "LiveGQL.framework"
+            BlueprintIdentifier = "D2B7E6431F12CDD000FCFC91"
+            BuildableName = "LiveGQL-macOS.framework"
             BlueprintName = "LiveGQL-macOS"
             ReferencedContainer = "container:LiveGQL.xcodeproj">
          </BuildableReference>
