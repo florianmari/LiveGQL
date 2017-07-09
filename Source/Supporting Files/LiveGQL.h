@@ -6,7 +6,7 @@
 //  Copyright © 2017 Florian. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for LiveGQL.
 FOUNDATION_EXPORT double LiveGQLVersionNumber;

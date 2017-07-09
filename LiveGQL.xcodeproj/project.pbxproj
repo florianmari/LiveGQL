@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D2B7E5FA1F12C7F500FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2B7E5FB1F12C82400FCFC91 /* LiveGQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */; };
-		D2B7E6091F12C88E00FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2B7E6171F12C8BF00FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2B7E64C1F12CE5200FCFC91 /* LiveGQL.h in Frameworks */ = {isa = PBXBuildFile; fileRef = D285F86E1F12C3C500116FA1 /* LiveGQL.h */; };
+		D2B7E6501F12CF2000FCFC91 /* JSONCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E64E1F12CF2000FCFC91 /* JSONCodable.framework */; };
+		D2B7E6511F12CF2000FCFC91 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E64F1F12CF2000FCFC91 /* Starscream.framework */; };
+		D2B7E6541F12CF2A00FCFC91 /* JSONCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E6521F12CF2A00FCFC91 /* JSONCodable.framework */; };
+		D2B7E6551F12CF2A00FCFC91 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E6531F12CF2A00FCFC91 /* Starscream.framework */; };
+		D2B7E6561F12CF3000FCFC91 /* LiveGQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */; };
+		D2B7E6571F12CF3000FCFC91 /* MessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */; };
+		D2B7E6581F12CF3000FCFC91 /* PayloadMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */; };
+		D2B7E65B1F12D03000FCFC91 /* LiveGQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */; };
+		D2B7E65C1F12D03000FCFC91 /* MessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */; };
+		D2B7E65D1F12D03000FCFC91 /* PayloadMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */; };
+		D2B7E6621F12D59800FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D2B7E6611F12D59500FCFC91 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2B7E6641F12D59B00FCFC91 /* LiveGQL.h in Headers */ = {isa = PBXBuildFile; fileRef = D2B7E6611F12D59500FCFC91 /* LiveGQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D285F86E1F12C3C500116FA1 /* LiveGQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveGQL.h; sourceTree = "<group>"; };
-		D285F86F1F12C3C500116FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveGQL.swift; path = Source/Classes/LiveGQL.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTypes.swift; path = Source/Classes/MessageTypes.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayloadMessages.swift; path = Source/Classes/PayloadMessages.swift; sourceTree = SOURCE_ROOT; };
@@ -24,6 +29,12 @@
 		D2B7E6011F12C84B00FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7E60F1F12C8AF00FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7E6441F12CDD000FCFC91 /* LiveGQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiveGQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7E64E1F12CF2000FCFC91 /* JSONCodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONCodable.framework; path = Carthage/Build/Mac/JSONCodable.framework; sourceTree = "<group>"; };
+		D2B7E64F1F12CF2000FCFC91 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/Mac/Starscream.framework; sourceTree = "<group>"; };
+		D2B7E6521F12CF2A00FCFC91 /* JSONCodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONCodable.framework; path = Carthage/Build/iOS/JSONCodable.framework; sourceTree = "<group>"; };
+		D2B7E6531F12CF2A00FCFC91 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		D2B7E6601F12D59500FCFC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Source/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
+		D2B7E6611F12D59500FCFC91 /* LiveGQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LiveGQL.h; path = "Source/Supporting Files/LiveGQL.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B7E6541F12CF2A00FCFC91 /* JSONCodable.framework in Frameworks */,
+				D2B7E6551F12CF2A00FCFC91 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7E64C1F12CE5200FCFC91 /* LiveGQL.h in Frameworks */,
+				D2B7E6501F12CF2000FCFC91 /* JSONCodable.framework in Frameworks */,
+				D2B7E6511F12CF2000FCFC91 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +78,7 @@
 			children = (
 				D285F86D1F12C3C500116FA1 /* LiveGQL */,
 				D285F86C1F12C3C500116FA1 /* Products */,
+				D2B7E64D1F12CF2000FCFC91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,8 +105,8 @@
 		D285F8761F12C3CE00116FA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D285F86E1F12C3C500116FA1 /* LiveGQL.h */,
-				D285F86F1F12C3C500116FA1 /* Info.plist */,
+				D2B7E6601F12D59500FCFC91 /* Info.plist */,
+				D2B7E6611F12D59500FCFC91 /* LiveGQL.h */,
 			);
 			name = "Supporting Files";
 			path = "Source/Supporting Files";
@@ -107,6 +122,17 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
+		D2B7E64D1F12CF2000FCFC91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7E6521F12CF2A00FCFC91 /* JSONCodable.framework */,
+				D2B7E6531F12CF2A00FCFC91 /* Starscream.framework */,
+				D2B7E64E1F12CF2000FCFC91 /* JSONCodable.framework */,
+				D2B7E64F1F12CF2000FCFC91 /* Starscream.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -114,7 +140,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7E5FA1F12C7F500FCFC91 /* LiveGQL.h in Headers */,
+				D2B7E6621F12D59800FCFC91 /* LiveGQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +148,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7E6091F12C88E00FCFC91 /* LiveGQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +155,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7E6171F12C8BF00FCFC91 /* LiveGQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +162,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B7E6641F12D59B00FCFC91 /* LiveGQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +324,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7E5FB1F12C82400FCFC91 /* LiveGQL.swift in Sources */,
+				D2B7E65B1F12D03000FCFC91 /* LiveGQL.swift in Sources */,
+				D2B7E65D1F12D03000FCFC91 /* PayloadMessages.swift in Sources */,
+				D2B7E65C1F12D03000FCFC91 /* MessageTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +348,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B7E6561F12CF3000FCFC91 /* LiveGQL.swift in Sources */,
+				D2B7E6581F12CF3000FCFC91 /* PayloadMessages.swift in Sources */,
+				D2B7E6571F12CF3000FCFC91 /* MessageTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +461,16 @@
 		D2B7E5F51F12C6FB00FCFC91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -449,11 +484,16 @@
 		D2B7E5F61F12C6FB00FCFC91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -559,6 +599,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -581,6 +625,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

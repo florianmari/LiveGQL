@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2B7E6431F12CDD000FCFC91"
-               BuildableName = "LiveGQL-macOS.framework"
+               BuildableName = "LiveGQL.framework"
                BlueprintName = "LiveGQL-macOS"
                ReferencedContainer = "container:LiveGQL.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7E6431F12CDD000FCFC91"
-            BuildableName = "LiveGQL-macOS.framework"
+            BuildableName = "LiveGQL.framework"
             BlueprintName = "LiveGQL-macOS"
             ReferencedContainer = "container:LiveGQL.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7E6431F12CDD000FCFC91"
-            BuildableName = "LiveGQL-macOS.framework"
+            BuildableName = "LiveGQL.framework"
             BlueprintName = "LiveGQL-macOS"
             ReferencedContainer = "container:LiveGQL.xcodeproj">
          </BuildableReference>
