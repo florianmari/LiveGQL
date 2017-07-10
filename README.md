@@ -1,5 +1,7 @@
 ![LiveGQL: Use GraphQL Websocket subscription in Swift](http://i.imgur.com/2hFD4w3.png)
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [Apollo Protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md).
 
 *Hello folks! I made this first preview of a future complete library, you can try it now and see in your console how it works! I will provide a fully functionnal version next week! But it's ready to use in development environment*
@@ -48,6 +50,14 @@ target '<Your Target Name>' do
     pod 'LiveGQL', '~> 0.0.4'
 end
 ```
+
+### Carthage
+
+```
+github "florianmari/LiveGQL"
+```
+
+See [Carthage guide](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) for more informations about integrating with Carthage.
 
 ### Manually
 
