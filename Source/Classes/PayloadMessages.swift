@@ -28,7 +28,7 @@ struct Payload {
 }
 
 struct PayloadServer {
-    let message: String?
+    let message: String
 }
 
 struct OperationMessageServer {
@@ -62,7 +62,7 @@ extension Payload: JSONEncodable {}
 extension OperationMessageServer: JSONDecodable {
     init(object: JSONObject) throws {
         let decoder = JSONDecoder(object: object)
-        payload = try decoder.decode("payload")
+        //payload = try decoder.decode("payload")
         id = try decoder.decode("id")
         type = try decoder.decode("type")
     }

@@ -14,6 +14,7 @@ open class LiveGQL {
     private(set) var socket: WebSocket
     public weak var delegate: LiveGQLDelegate?
     fileprivate var queue: [String] = []
+    public var verbose = false
     
     public required init(socket url: String) {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
@@ -34,14 +35,53 @@ open class LiveGQL {
         self.socket.isConnected ? socket.write(string: message) : self.queue.append(message)
     }
     
+    private func verbosePrint(_ message: String) {
+        if verbose {
+            print(message)
+        }
+    }
+    
     fileprivate func serverMessageHandler(_ message: String) {
-        if message == "{\"type\":\"connection_ack\"}" {
-            if (!self.queue.isEmpty) {
-                for m in self.queue {
-                    self.sendRaw(m)
+        do {
+            let dict = self.convertToDictionary(text: message)
+            let obj = try OperationMessageServer(object: dict!)
+            print(obj)
+            switch obj.type {
+            case MessageTypes.GQL_CONNECTION_ACK.rawValue?:
+                if (!self.queue.isEmpty) {
+                    for m in self.queue {
+                        self.sendRaw(m)
+                    }
                 }
+            case MessageTypes.GQL_CONNECTION_ERROR.rawValue?:
+                print("Error with server connection (maybe connectionParams)")
+            case MessageTypes.GQL_CONNECTION_KEEP_ALIVE.rawValue?:
+                self.verbosePrint("Ping by server.")
+            case MessageTypes.GQL_DATA.rawValue?:
+                self.delegate?.receivedRawMessage(text: message)
+                self.delegate?.receiveDictMessage!(dict: dict)
+            case MessageTypes.GQL_ERROR.rawValue?:
+                print("LiveGQL: Error return")
+                print(message)
+            case MessageTypes.GQL_COMPLETE.rawValue?:
+                self.verbosePrint("Operation complete.")
+            default:
+                print("LiveGQL: Unxpected message from server.")
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
             }
         }
+        return nil
     }
     
     public func initServer(connectionParams params: [String:String]?) {
@@ -111,7 +151,6 @@ extension LiveGQL : WebSocketDelegate {
     
     public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
         self.serverMessageHandler(text)
-        self.delegate?.receivedMessage(text: text)
     }
     
     public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
@@ -119,6 +158,7 @@ extension LiveGQL : WebSocketDelegate {
     }
 }
 
-public protocol LiveGQLDelegate: class {
-    func receivedMessage(text: String)
+@objc public protocol LiveGQLDelegate: class {
+    func receivedRawMessage(text: String)
+    @objc optional func receiveDictMessage(dict: [String: Any]?)
 }
