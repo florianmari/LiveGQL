@@ -45,7 +45,6 @@ open class LiveGQL {
         do {
             let dict = self.convertToDictionary(text: message)
             let obj = try OperationMessageServer(object: dict!)
-            print(obj)
             switch obj.type {
             case MessageTypes.GQL_CONNECTION_ACK.rawValue?:
                 if (!self.queue.isEmpty) {
