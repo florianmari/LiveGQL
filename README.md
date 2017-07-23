@@ -65,6 +65,9 @@ See [Carthage guide](https://github.com/Carthage/Carthage#adding-frameworks-to-a
 
 Just copy files in the Source folder!
 
+### tvOS & watchOS
+
+Because tvOS is not included in the JSONCodable dependency, you have to manually install all files (dependencies include except for Starscream).
 
 ## Usage
 
