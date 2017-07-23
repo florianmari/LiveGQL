@@ -8,7 +8,6 @@
 
 import Foundation
 import Starscream
-import JSONCodable
 
 open class LiveGQL {
     private(set) var socket: WebSocket
@@ -23,47 +22,49 @@ open class LiveGQL {
     }
     
     fileprivate func serverMessageHandler(_ message: String) {
-        do {
-            let dict = self.convertToDictionary(text: message)
-            let obj = try OperationMessageServer(object: dict!)
-            switch obj.type {
-            case MessageTypes.GQL_CONNECTION_ACK.rawValue?:
-                if (!self.queue.isEmpty) {
-                    for m in self.queue {
-                        self.sendRaw(m)
-                    }
+        if let obj = message.data(using: String.Encoding.utf8, allowLossyConversion: false) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: obj) as? [String: Any]
+                guard let type = json?["type"] as? String else {
+                    print("Error JSON parsing")
+                    return
                 }
-            case MessageTypes.GQL_CONNECTION_ERROR.rawValue?:
-                print("Error with server connection (maybe connectionParams)")
-            case MessageTypes.GQL_CONNECTION_KEEP_ALIVE.rawValue?:
-                self.verbosePrint("Ping by server.")
-            case MessageTypes.GQL_DATA.rawValue?:
-                self.delegate?.receivedRawMessage(text: message)
-                self.delegate?.receiveDictMessage!(dict: dict)
-            case MessageTypes.GQL_ERROR.rawValue?:
-                print("LiveGQL: Error return")
-                print(message)
-            case MessageTypes.GQL_COMPLETE.rawValue?:
-                self.verbosePrint("Operation complete.")
-            default:
-                print("LiveGQL: Unxpected message from server.")
+                switch type {
+                case MessageTypes.GQL_CONNECTION_ACK.rawValue:
+                    self.delegate?.receivedRawMessage(text: message)
+                    if (!self.queue.isEmpty) {
+                        for m in self.queue {
+                            self.sendRaw(m)
+                        }
+                    }
+                case MessageTypes.GQL_CONNECTION_ERROR.rawValue:
+                    print("Error with server connection (maybe connectionParams)")
+                case MessageTypes.GQL_CONNECTION_KEEP_ALIVE.rawValue:
+                    self.verbosePrint("Ping by server.")
+                case MessageTypes.GQL_DATA.rawValue:
+                    self.delegate?.receivedRawMessage(text: message)
+                    //self.delegate?.receiveDictMessage!(dict: dict)
+                case MessageTypes.GQL_ERROR.rawValue:
+                    print("LiveGQL: Error return")
+                    print(message)
+                case MessageTypes.GQL_COMPLETE.rawValue:
+                    print("Operation complete.")
+                default:
+                    print("LiveGQL: Unxpected message from server.")
+                }
+            } catch {
+                print(error)
             }
-        } catch {
-            print(error)
         }
     }
     
-    public func initServer(connectionParams params: [String:String]?) {
-        self.socket.connect()
+    public func initServer(connectionParams params: [String:Any]?) {
         let unserializedMessage = InitOperationMessage(
             payload: params,
             id: nil,
             type: MessageTypes.GQL_CONNECTION_INIT.rawValue)
-        do {
-            let serializedMessage = try unserializedMessage.toJSONString()
+        if let serializedMessage = unserializedMessage.toJSON() {
             self.sendRaw(serializedMessage)
-        } catch {
-            print(#function, error)
         }
     }
     
@@ -80,7 +81,9 @@ open class LiveGQL {
     
     public func unsubscribe(subscribtion identifier: String) {
         let unserializedMessage = OperationMessage(
-            payload: nil,
+            payload: Payload(query: nil,
+                             variables: nil,
+                             operationName: nil),
             id: identifier,
             type: MessageTypes.GQL_STOP.rawValue
         )
@@ -89,7 +92,9 @@ open class LiveGQL {
     
     public func closeConnection() {
         let unserializedMessage = OperationMessage(
-            payload: nil,
+            payload: Payload(query: nil,
+                             variables: nil,
+                             operationName: nil),
             id: nil,
             type: MessageTypes.GQL_CONNECTION_TERMINATE.rawValue
         )
@@ -103,11 +108,10 @@ open class LiveGQL {
     }
     
     private func sendMessage(_ message: OperationMessage) {
-        do {
-            let serializedMessage = try message.toJSONString()
-            self.sendRaw(serializedMessage)
-        } catch {
-            print(error)
+        if let final = message.toJSON() {
+            sendRaw(final)
+        } else {
+            print("Error while send message")
         }
     }
     
@@ -117,17 +121,6 @@ open class LiveGQL {
     
     public func isConnected() -> Bool {
         return socket.isConnected
-    }
-    
-    private func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
     }
     
     deinit {

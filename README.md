@@ -4,8 +4,6 @@
 
 LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [Apollo Protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md).
 
-*Hello folks! I made this first preview of a future complete library, you can try it now and see in your console how it works! I will provide a fully functionnal version next week! But it's ready to use in development environment*
-
 - [Features](#features)
 - [Requirements](#requirements)
 - [Communication](#communication)
@@ -49,7 +47,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiveGQL', '~> 1.0.0'
+    pod 'LiveGQL', '~> 1.1.0'
 end
 ```
 
@@ -64,10 +62,6 @@ See [Carthage guide](https://github.com/Carthage/Carthage#adding-frameworks-to-a
 ### Manually
 
 Just copy files in the Source folder!
-
-### tvOS & watchOS
-
-Because tvOS is not included in the JSONCodable dependency, you have to manually install all files (dependencies include except for Starscream).
 
 ## Usage
 
