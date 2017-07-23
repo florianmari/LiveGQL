@@ -1,6 +1,0 @@
-framework module Pods_LiveGQLExample {
-  umbrella header "Pods-LiveGQLExample-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module LiveGQL {
-  umbrella header "LiveGQL-umbrella.h"
-
-  export *
-  module * { export * }
-}
