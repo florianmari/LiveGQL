@@ -20,13 +20,15 @@ LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [A
 - [x] Subscribe / unsubscribe
 - [x] Close connection
 - [x] Data handling (delegate)
-- [ ] Error handling
-- [ ] JSON parsing
-- [ ] Implement all Apollo protocol (today just Client part totally implemented)
+- [x] Error handling
+- [x] JSON raw response
+- [x] Queue of unsent messages
+- [x] Implement all Apollo protocol (today just Client part totally implemented)
+- [ ] Next: Swift 4 update with native JSON Encoder/Decoder
 
 ## Requirements
 
-- iOS 9.0
+- iOS 9.0 / tvOS 9.0
 - Xcode >= 8.1
 - Swift >= 3.0
 
@@ -47,7 +49,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiveGQL', '~> 0.0.4'
+    pod 'LiveGQL', '~> 1.0.0'
 end
 ```
 
@@ -75,8 +77,10 @@ import LiveGQL
 
 let gql = LiveGQL(socket: "ws://localhost:7003/feedback")
 
-gql.initServer()
+gql.initServer(connectionParams: nil)
 ```
+
+You can set a Dictionnary[String:String] as connectionParams like for authentification by example.
 
 ### Subscribe / Unsubscribe
 
@@ -115,7 +119,7 @@ extension ViewController: LiveGQLDelegate {
 Just call unsubscribe method and your identifier
 
 ```swift
-gql.unsubscribe(subscribtion: "feed")
+gql.unsubscribe(identifier: "feed")
 ```
 
 ### Close connection
@@ -126,8 +130,4 @@ gql.closeConnection()
 
 ## Bugs
 
-Bugs I know:
 
-- I don't verify if the initMessage (initServer()) has been sent (if it hasn't subscribe doesn't work)
-- closeConnection() may be bug
-- Error are not handled but your app won't crash (because it's on the stream ;))

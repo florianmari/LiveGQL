@@ -22,25 +22,6 @@ open class LiveGQL {
         self.socket.connect()
     }
     
-    private func sendMessage(_ message: OperationMessage) {
-        do {
-            let serializedMessage = try message.toJSONString()
-            self.sendRaw(serializedMessage)
-        } catch {
-            print(error)
-        }
-    }
-    
-    fileprivate func sendRaw(_ message: String) {
-        self.socket.isConnected ? socket.write(string: message) : self.queue.append(message)
-    }
-    
-    private func verbosePrint(_ message: String) {
-        if verbose {
-            print(message)
-        }
-    }
-    
     fileprivate func serverMessageHandler(_ message: String) {
         do {
             let dict = self.convertToDictionary(text: message)
@@ -70,17 +51,6 @@ open class LiveGQL {
         } catch {
             print(error)
         }
-    }
-    
-    private func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
     }
     
     public func initServer(connectionParams params: [String:String]?) {
@@ -126,8 +96,38 @@ open class LiveGQL {
         self.sendMessage(unserializedMessage)
     }
     
+    private func verbosePrint(_ message: String) {
+        if verbose {
+            print(message)
+        }
+    }
+    
+    private func sendMessage(_ message: OperationMessage) {
+        do {
+            let serializedMessage = try message.toJSONString()
+            self.sendRaw(serializedMessage)
+        } catch {
+            print(error)
+        }
+    }
+    
+    fileprivate func sendRaw(_ message: String) {
+        self.socket.isConnected ? socket.write(string: message) : self.queue.append(message)
+    }
+    
     public func isConnected() -> Bool {
         return socket.isConnected
+    }
+    
+    private func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     deinit {
