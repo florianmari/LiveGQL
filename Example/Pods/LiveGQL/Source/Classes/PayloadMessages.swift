@@ -15,12 +15,6 @@ struct OperationMessage {
     let type: String?
 }
 
-struct InitOperationMessage {
-    let payload: [String: String]?
-    let id: String?
-    let type: String?
-}
-
 struct Payload {
     let query: String
     let variables: String?
@@ -35,16 +29,6 @@ struct OperationMessageServer {
     var payload: PayloadServer?
     let id: String?
     let type: String?
-}
-
-extension InitOperationMessage: JSONEncodable {
-    func toJSON() throws -> Any {
-        return try JSONEncoder.create({ (encoder) -> Void in
-            try encoder.encode(payload, key: "payload")
-            try encoder.encode(id, key: "id")
-            try encoder.encode(type, key: "type")
-        })
-    }
 }
 
 extension OperationMessage: JSONEncodable {

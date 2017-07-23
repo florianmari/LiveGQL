@@ -1,0 +1,18 @@
+PODS:
+  - JSONCodable (3.0.1)
+  - LiveGQL (0.0.4):
+    - JSONCodable (~> 3.0.1)
+    - Starscream (~> 2.0.3)
+  - Starscream (2.0.4)
+
+DEPENDENCIES:
+  - LiveGQL (~> 0.0.4)
+
+SPEC CHECKSUMS:
+  JSONCodable: bd8616ae881befe2b82fbbf56d98b2dd377ac662
+  LiveGQL: 1fe9ef3adf701f765b14b05afad9f73874b84753
+  Starscream: df5974ee928b157c8eda8af8de7c620276b7dfcc
+
+PODFILE CHECKSUM: 409563ff8794357c3c2b4f590bca5b63588cbf9e
+
+COCOAPODS: 1.2.0

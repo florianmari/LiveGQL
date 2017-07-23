@@ -13,9 +13,8 @@ import JSONCodable
 open class LiveGQL {
     private(set) var socket: WebSocket
     public weak var delegate: LiveGQLDelegate?
-    fileprivate var queue: [String] = []
     
-    public required init(socket url: String) {
+    public init(socket url: String) {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
         self.socket.delegate = self
         self.socket.connect()
@@ -24,38 +23,24 @@ open class LiveGQL {
     private func sendMessage(_ message: OperationMessage) {
         do {
             let serializedMessage = try message.toJSONString()
-            self.sendRaw(serializedMessage)
+            if socket.isConnected {
+                socket.write(string: serializedMessage)
+            }
         } catch {
             print(error)
         }
     }
     
-    fileprivate func sendRaw(_ message: String) {
-        self.socket.isConnected ? socket.write(string: message) : self.queue.append(message)
+    fileprivate func errorHandler(_ message: String) {
+        
     }
     
-    fileprivate func serverMessageHandler(_ message: String) {
-        if message == "{\"type\":\"connection_ack\"}" {
-            if (!self.queue.isEmpty) {
-                for m in self.queue {
-                    self.sendRaw(m)
-                }
-            }
-        }
-    }
-    
-    public func initServer(connectionParams params: [String:String]?) {
-        self.socket.connect()
-        let unserializedMessage = InitOperationMessage(
-            payload: params,
+    public func initServer() {
+        let unserializedMessage = OperationMessage(
+            payload: nil,
             id: nil,
             type: MessageTypes.GQL_CONNECTION_INIT.rawValue)
-        do {
-            let serializedMessage = try unserializedMessage.toJSONString()
-            self.sendRaw(serializedMessage)
-        } catch {
-            print(#function, error)
-        }
+        self.sendMessage(unserializedMessage)
     }
     
     public func subscribe(graphql query: String, identifier: String) {
@@ -99,23 +84,20 @@ open class LiveGQL {
 
 extension LiveGQL : WebSocketDelegate {
     public func websocketDidConnect(socket: Starscream.WebSocket) {
-        if self.queue.isEmpty {
-            return
-        }
-        self.sendRaw(self.queue[0])
-        self.queue.remove(at: 0)
+        print("LiveGQL: Connected to socket")
     }
     
     public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
     }
     
     public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
-        self.serverMessageHandler(text)
+        self.errorHandler(text)
         self.delegate?.receivedMessage(text: text)
     }
     
     public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
-        
+        print("Data received")
+        print(data)
     }
 }
 
