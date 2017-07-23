@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7521128F1F255B8600AAFBA2 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521128E1F255B8600AAFBA2 /* JSONHelper.swift */; };
 		D2B7E6501F12CF2000FCFC91 /* JSONCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E64E1F12CF2000FCFC91 /* JSONCodable.framework */; };
 		D2B7E6511F12CF2000FCFC91 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E64F1F12CF2000FCFC91 /* Starscream.framework */; };
 		D2B7E6541F12CF2A00FCFC91 /* JSONCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E6521F12CF2A00FCFC91 /* JSONCodable.framework */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7521128E1F255B8600AAFBA2 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONHelper.swift; path = Source/Classes/JSONHelper.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveGQL.swift; path = Source/Classes/LiveGQL.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTypes.swift; path = Source/Classes/MessageTypes.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayloadMessages.swift; path = Source/Classes/PayloadMessages.swift; sourceTree = SOURCE_ROOT; };
@@ -117,6 +119,7 @@
 			children = (
 				D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */,
 				D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */,
+				7521128E1F255B8600AAFBA2 /* JSONHelper.swift */,
 				D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */,
 			);
 			name = Sources;
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7E65B1F12D03000FCFC91 /* LiveGQL.swift in Sources */,
+				7521128F1F255B8600AAFBA2 /* JSONHelper.swift in Sources */,
 				D2B7E65D1F12D03000FCFC91 /* PayloadMessages.swift in Sources */,
 				D2B7E65C1F12D03000FCFC91 /* MessageTypes.swift in Sources */,
 			);
@@ -688,6 +692,7 @@
 				D2B7E64B1F12CDD000FCFC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
