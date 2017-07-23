@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
  s.name         = "LiveGQL"
- s.version      = "0.0.4"
+ s.version      = "1.0.0"
  s.summary      = "Implementation of GraphQL Subscription Websocket in Swift"
  s.description  = <<-DESC
  Simple implementation in Swift of the PROTOCOL to communicate with a GraphQL Apollo WS server.
