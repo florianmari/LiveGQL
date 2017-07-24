@@ -1,6 +1,8 @@
 ![LiveGQL: Use GraphQL Websocket subscription in Swift](http://i.imgur.com/2hFD4w3.png)
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPod](https://img.shields.io/cocoapods/v/LiveGQL.svg)](https://github.com/florianmari/LiveGQL)
+[![GraphQL](https://img.shields.io/badge/Designed%20for-GraphQL-ff69b4.svg)]()
 
 LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [Apollo Protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md).
 
@@ -73,7 +75,7 @@ Important: to not fall out the variable in the scope, please instantiate above y
 import LiveGQL
 
 let gql = LiveGQL(socket: "ws://localhost:7003/feedback")
-
+gql.delegate = self
 gql.initServer(connectionParams: nil)
 ```
 
