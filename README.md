@@ -4,6 +4,8 @@
 
 LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [Apollo Protocol](https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md).
 
+The Android version is [here](https://github.com/billybichon/liveGQL)
+
 - [Features](#features)
 - [Requirements](#requirements)
 - [Communication](#communication)
@@ -19,6 +21,7 @@ LiveGQL is a simple library to use GraphQL Subscribtion on WebSocket based on [A
 - [x] Close connection
 - [x] Data handling (delegate)
 - [x] Error handling
+- [x] Reconnect option
 - [x] JSON raw response
 - [x] Queue of unsent messages
 - [x] Implement all Apollo protocol (today just Client part totally implemented)
@@ -47,7 +50,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiveGQL', '~> 1.1.0'
+    pod 'LiveGQL', '~> 1.1.1'
 end
 ```
 
@@ -74,7 +77,7 @@ import LiveGQL
 
 let gql = LiveGQL(socket: "ws://localhost:7003/feedback")
 
-gql.initServer(connectionParams: nil)
+gql.initServer(connectionParams: nil, reconnect: true)
 ```
 
 You can set a Dictionnary[String:String] as connectionParams like for authentification by example.

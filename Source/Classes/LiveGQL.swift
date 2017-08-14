@@ -14,6 +14,13 @@ open class LiveGQL {
     public weak var delegate: LiveGQLDelegate?
     fileprivate var queue: [String] = []
     public var verbose = false
+    fileprivate var reconnect = false
+    fileprivate var params: [String:Any]?
+    fileprivate var stateConnect = false {
+        didSet {
+            self.initServer(connectionParams: self.params, reconnect: self.reconnect)
+        }
+    };
     
     public required init(socket url: String) {
         self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
@@ -43,7 +50,7 @@ open class LiveGQL {
                     self.verbosePrint("Ping by server.")
                 case MessageTypes.GQL_DATA.rawValue:
                     self.delegate?.receivedRawMessage(text: message)
-                    //self.delegate?.receiveDictMessage!(dict: dict)
+                //self.delegate?.receiveDictMessage!(dict: dict)
                 case MessageTypes.GQL_ERROR.rawValue:
                     print("LiveGQL: Error return")
                     print(message)
@@ -58,9 +65,25 @@ open class LiveGQL {
         }
     }
     
-    public func initServer(connectionParams params: [String:Any]?) {
+    public func initServer(connectionParams params: [String:Any]?, reconnect: Bool?) {
+        if let reconnect = reconnect {
+            if (reconnect) {
+                self.reconnect = true
+                self.params = params
+            }
+        }
         let unserializedMessage = InitOperationMessage(
             payload: params,
+            id: nil,
+            type: MessageTypes.GQL_CONNECTION_INIT.rawValue)
+        if let serializedMessage = unserializedMessage.toJSON() {
+            self.sendRaw(serializedMessage)
+        }
+    }
+    
+    fileprivate func reconnectInit() {
+        let unserializedMessage = InitOperationMessage(
+            payload: self.params,
             id: nil,
             type: MessageTypes.GQL_CONNECTION_INIT.rawValue)
         if let serializedMessage = unserializedMessage.toJSON() {
@@ -91,6 +114,7 @@ open class LiveGQL {
     }
     
     public func closeConnection() {
+        self.reconnect = false
         let unserializedMessage = OperationMessage(
             payload: Payload(query: nil,
                              variables: nil,
@@ -131,14 +155,19 @@ open class LiveGQL {
 
 extension LiveGQL : WebSocketDelegate {
     public func websocketDidConnect(socket: Starscream.WebSocket) {
+        self.stateConnect = true
         if self.queue.isEmpty {
             return
         }
         self.sendRaw(self.queue[0])
         self.queue.remove(at: 0)
+        
     }
     
     public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
+        if (self.reconnect) {
+            self.socket.connect();
+        }
     }
     
     public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
