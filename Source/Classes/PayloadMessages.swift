@@ -22,7 +22,7 @@ struct InitOperationMessage: JSONSerializable {
 
 struct Payload: JSONSerializable {
     let query: String?
-    let variables: String?
+    let variables: [String: String]?
     let operationName: String?
 }
 

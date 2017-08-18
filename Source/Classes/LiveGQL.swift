@@ -91,11 +91,11 @@ open class LiveGQL {
         }
     }
     
-    public func subscribe(graphql query: String, identifier: String) {
+    public func subscribe(graphql query: String, variables: [String:String]?, operationName: String?, identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: query,
-                             variables: nil,
-                             operationName: nil),
+                             variables: variables,
+                             operationName: operationName),
             id: identifier,
             type: MessageTypes.GQL_START.rawValue
         )
