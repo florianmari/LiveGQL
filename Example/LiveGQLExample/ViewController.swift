@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func subscribe(_ sender: Any) {
-        gql.subscribe(graphql: "subscription {feedbackAdded {id, text}}", identifier: "feed")
+        gql.subscribe(graphql: "subscription {feedbackAdded {id, text}}", variables:nil, operationName: nil, identifier: "feed")
     }
     
     @IBAction func unsubscribe(_ sender: Any) {
