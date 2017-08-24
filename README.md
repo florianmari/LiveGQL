@@ -52,7 +52,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiveGQL', '~> 1.1.1'
+    pod 'LiveGQL', '~> 1.1.2'
 end
 ```
 
