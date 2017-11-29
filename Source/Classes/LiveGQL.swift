@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Starscream
+import SocketRocket
 
-open class LiveGQL {
-    private(set) var socket: WebSocket
+open class LiveGQL : NSObject {
+    private(set) var socket: SRWebSocket
     public weak var delegate: LiveGQLDelegate?
     fileprivate var queue: [String] = []
     public var verbose = false
@@ -21,13 +21,14 @@ open class LiveGQL {
             self.initServer(connectionParams: self.params, reconnect: self.reconnect)
         }
     };
-    
+
     public required init(socket url: String) {
-        self.socket = WebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
+        self.socket = SRWebSocket(url: URL(string:url)!, protocols: ["graphql-ws"])
+        super.init()
         self.socket.delegate = self
-        self.socket.connect()
+        self.socket.open()
     }
-    
+
     fileprivate func serverMessageHandler(_ message: String) {
         if let obj = message.data(using: String.Encoding.utf8, allowLossyConversion: false) {
             do {
@@ -64,7 +65,7 @@ open class LiveGQL {
             }
         }
     }
-    
+
     public func initServer(connectionParams params: [String:Any]?, reconnect: Bool?) {
         if let reconnect = reconnect {
             if (reconnect) {
@@ -80,7 +81,7 @@ open class LiveGQL {
             self.sendRaw(serializedMessage)
         }
     }
-    
+
     fileprivate func reconnectInit() {
         let unserializedMessage = InitOperationMessage(
             payload: self.params,
@@ -90,7 +91,7 @@ open class LiveGQL {
             self.sendRaw(serializedMessage)
         }
     }
-    
+
     public func subscribe(graphql query: String, variables: [String:String]?, operationName: String?, identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: query,
@@ -101,7 +102,7 @@ open class LiveGQL {
         )
         self.sendMessage(unserializedMessage)
     }
-    
+
     public func unsubscribe(subscribtion identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: nil,
@@ -112,7 +113,7 @@ open class LiveGQL {
         )
         self.sendMessage(unserializedMessage)
     }
-    
+
     public func closeConnection() {
         self.reconnect = false
         let unserializedMessage = OperationMessage(
@@ -124,13 +125,13 @@ open class LiveGQL {
         )
         self.sendMessage(unserializedMessage)
     }
-    
+
     private func verbosePrint(_ message: String) {
         if verbose {
             print(message)
         }
     }
-    
+
     private func sendMessage(_ message: OperationMessage) {
         if let final = message.toJSON() {
             sendRaw(final)
@@ -138,44 +139,39 @@ open class LiveGQL {
             print("Error while send message")
         }
     }
-    
+
     fileprivate func sendRaw(_ message: String) {
-        self.socket.isConnected ? socket.write(string: message) : self.queue.append(message)
+        self.socket.readyState == SRReadyState.OPEN ? socket.send(message) : self.queue.append(message)
     }
-    
+
     public func isConnected() -> Bool {
-        return socket.isConnected
+        return socket.readyState == SRReadyState.OPEN
     }
-    
+
     deinit {
-        self.socket.disconnect(forceTimeout: 0)
+        self.socket.close()
         self.socket.delegate = nil
     }
 }
 
-extension LiveGQL : WebSocketDelegate {
-    public func websocketDidConnect(socket: Starscream.WebSocket) {
+extension LiveGQL : SRWebSocketDelegate {
+    public func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         self.stateConnect = true
         if self.queue.isEmpty {
             return
         }
         self.sendRaw(self.queue[0])
         self.queue.remove(at: 0)
-        
     }
-    
-    public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
+
+    public func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         if (self.reconnect) {
-            self.socket.connect();
+            self.socket.open();
         }
     }
-    
-    public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
-        self.serverMessageHandler(text)
-    }
-    
-    public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
-        
+
+    public func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+        self.serverMessageHandler(String(describing: message!))
     }
 }
 
