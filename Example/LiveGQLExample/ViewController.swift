@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func initMessage(_ sender: Any) {
-        gql.initServer()
+        gql.initServer(connectionParams: nil, reconnect: true)
     }
     
     @IBAction func subscribe(_ sender: Any) {
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: LiveGQLDelegate {
-    func receivedMessage(text: String) {
+    func receivedRawMessage(text: String) {
         print("Received Message: \(text)")
     }
 }
