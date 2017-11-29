@@ -22,20 +22,20 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func initMessage(_ sender: Any) {
+
+    @IBAction func initMessage(_: Any) {
         gql.initServer(connectionParams: nil, reconnect: true)
     }
-    
-    @IBAction func subscribe(_ sender: Any) {
-        gql.subscribe(graphql: "subscription {feedbackAdded {id, text}}", variables:nil, operationName: nil, identifier: "feed")
+
+    @IBAction func subscribe(_: Any) {
+        gql.subscribe(graphql: "subscription {feedbackAdded {id, text}}", variables: nil, operationName: nil, identifier: "feed")
     }
-    
-    @IBAction func unsubscribe(_ sender: Any) {
+
+    @IBAction func unsubscribe(_: Any) {
         gql.unsubscribe(subscribtion: "feed")
     }
-    
-    @IBAction func closeConnection(_ sender: Any) {
+
+    @IBAction func closeConnection(_: Any) {
         gql.closeConnection()
     }
 }
@@ -45,4 +45,3 @@ extension ViewController: LiveGQLDelegate {
         print("Received Message: \(text)")
     }
 }
-
