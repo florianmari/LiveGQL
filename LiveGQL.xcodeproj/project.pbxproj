@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CB89B046E3562CDDF19267C /* Pods_LiveGQL_LiveGQL_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEAE4B36A5761969FEF7BE1 /* Pods_LiveGQL_LiveGQL_macOS.framework */; };
+		546168140D3A1CAD7AF850D7 /* Pods_LiveGQL_LiveGQL_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFF8E83630494247FD9119E /* Pods_LiveGQL_LiveGQL_iOS.framework */; };
 		7521128F1F255B8600AAFBA2 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521128E1F255B8600AAFBA2 /* JSONHelper.swift */; };
 		D2B7E6501F12CF2000FCFC91 /* JSONCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E64E1F12CF2000FCFC91 /* JSONCodable.framework */; };
 		D2B7E6511F12CF2000FCFC91 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E64F1F12CF2000FCFC91 /* Starscream.framework */; };
 		D2B7E6541F12CF2A00FCFC91 /* JSONCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E6521F12CF2A00FCFC91 /* JSONCodable.framework */; };
-		D2B7E6551F12CF2A00FCFC91 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7E6531F12CF2A00FCFC91 /* Starscream.framework */; };
 		D2B7E6561F12CF3000FCFC91 /* LiveGQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */; };
 		D2B7E6571F12CF3000FCFC91 /* MessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */; };
 		D2B7E6581F12CF3000FCFC91 /* PayloadMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */; };
@@ -23,7 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EFF8E83630494247FD9119E /* Pods_LiveGQL_LiveGQL_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveGQL_LiveGQL_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0FB92F6F474B95BB179E19 /* Pods-LiveGQL-LiveGQL-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveGQL-LiveGQL-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiveGQL-LiveGQL-macOS/Pods-LiveGQL-LiveGQL-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		7521128E1F255B8600AAFBA2 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONHelper.swift; path = Source/Classes/JSONHelper.swift; sourceTree = SOURCE_ROOT; };
+		BD511DD754B8711F6E31ADEA /* Pods_LiveGQL_LiveGQL_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveGQL_LiveGQL_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6DA4541A832E33D47CB81C1 /* Pods-LiveGQL-LiveGQL-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveGQL-LiveGQL-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiveGQL-LiveGQL-macOS/Pods-LiveGQL-LiveGQL-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D2B7E5E41F12C4A500FCFC91 /* LiveGQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveGQL.swift; path = Source/Classes/LiveGQL.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E51F12C4A500FCFC91 /* MessageTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTypes.swift; path = Source/Classes/MessageTypes.swift; sourceTree = SOURCE_ROOT; };
 		D2B7E5E61F12C4A500FCFC91 /* PayloadMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayloadMessages.swift; path = Source/Classes/PayloadMessages.swift; sourceTree = SOURCE_ROOT; };
@@ -37,6 +42,10 @@
 		D2B7E6531F12CF2A00FCFC91 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		D2B7E6601F12D59500FCFC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Source/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		D2B7E6611F12D59500FCFC91 /* LiveGQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LiveGQL.h; path = "Source/Supporting Files/LiveGQL.h"; sourceTree = SOURCE_ROOT; };
+		DBEAE4B36A5761969FEF7BE1 /* Pods_LiveGQL_LiveGQL_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveGQL_LiveGQL_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF4FA36B6CE21014FB3717E3 /* Pods_LiveGQL_LiveGQL_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveGQL_LiveGQL_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFCBCFEAF8951EFD5CF01AA5 /* Pods-LiveGQL-LiveGQL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveGQL-LiveGQL-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiveGQL-LiveGQL-iOS/Pods-LiveGQL-LiveGQL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F778D89B75FC9213C252E3A0 /* Pods-LiveGQL-LiveGQL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveGQL-LiveGQL-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiveGQL-LiveGQL-iOS/Pods-LiveGQL-LiveGQL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7E6541F12CF2A00FCFC91 /* JSONCodable.framework in Frameworks */,
-				D2B7E6551F12CF2A00FCFC91 /* Starscream.framework in Frameworks */,
+				546168140D3A1CAD7AF850D7 /* Pods_LiveGQL_LiveGQL_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,18 +78,31 @@
 			files = (
 				D2B7E6501F12CF2000FCFC91 /* JSONCodable.framework in Frameworks */,
 				D2B7E6511F12CF2000FCFC91 /* Starscream.framework in Frameworks */,
+				0CB89B046E3562CDDF19267C /* Pods_LiveGQL_LiveGQL_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DC04C988880ADCCF1855934 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DFCBCFEAF8951EFD5CF01AA5 /* Pods-LiveGQL-LiveGQL-iOS.debug.xcconfig */,
+				F778D89B75FC9213C252E3A0 /* Pods-LiveGQL-LiveGQL-iOS.release.xcconfig */,
+				C6DA4541A832E33D47CB81C1 /* Pods-LiveGQL-LiveGQL-macOS.debug.xcconfig */,
+				3B0FB92F6F474B95BB179E19 /* Pods-LiveGQL-LiveGQL-macOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D285F8611F12C3C500116FA1 = {
 			isa = PBXGroup;
 			children = (
 				D285F86D1F12C3C500116FA1 /* LiveGQL */,
 				D285F86C1F12C3C500116FA1 /* Products */,
 				D2B7E64D1F12CF2000FCFC91 /* Frameworks */,
+				8DC04C988880ADCCF1855934 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +154,10 @@
 				D2B7E6531F12CF2A00FCFC91 /* Starscream.framework */,
 				D2B7E64E1F12CF2000FCFC91 /* JSONCodable.framework */,
 				D2B7E64F1F12CF2000FCFC91 /* Starscream.framework */,
+				0EFF8E83630494247FD9119E /* Pods_LiveGQL_LiveGQL_iOS.framework */,
+				DBEAE4B36A5761969FEF7BE1 /* Pods_LiveGQL_LiveGQL_macOS.framework */,
+				DF4FA36B6CE21014FB3717E3 /* Pods_LiveGQL_LiveGQL_tvOS.framework */,
+				BD511DD754B8711F6E31ADEA /* Pods_LiveGQL_LiveGQL_watchOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,10 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2B7E5F41F12C6FB00FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-iOS" */;
 			buildPhases = (
+				54AB1512FEFCCC9C6933253E /* [CP] Check Pods Manifest.lock */,
 				D2B7E5EA1F12C6FB00FCFC91 /* Sources */,
 				D2B7E5EB1F12C6FB00FCFC91 /* Frameworks */,
 				D2B7E5EC1F12C6FB00FCFC91 /* Headers */,
 				D2B7E5ED1F12C6FB00FCFC91 /* Resources */,
+				5443160BA31BC42AAC4C0E49 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,10 +258,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2B7E6491F12CDD000FCFC91 /* Build configuration list for PBXNativeTarget "LiveGQL-macOS" */;
 			buildPhases = (
+				DCC351D637BD59663D28A070 /* [CP] Check Pods Manifest.lock */,
 				D2B7E63F1F12CDD000FCFC91 /* Sources */,
 				D2B7E6401F12CDD000FCFC91 /* Frameworks */,
 				D2B7E6411F12CDD000FCFC91 /* Headers */,
 				D2B7E6421F12CDD000FCFC91 /* Resources */,
+				5F4ABFEB25CB697B55B5483C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,6 +351,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5443160BA31BC42AAC4C0E49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiveGQL-LiveGQL-iOS/Pods-LiveGQL-LiveGQL-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54AB1512FEFCCC9C6933253E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveGQL-LiveGQL-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F4ABFEB25CB697B55B5483C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiveGQL-LiveGQL-macOS/Pods-LiveGQL-LiveGQL-macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCC351D637BD59663D28A070 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveGQL-LiveGQL-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2B7E5EA1F12C6FB00FCFC91 /* Sources */ = {
@@ -464,6 +563,7 @@
 		};
 		D2B7E5F51F12C6FB00FCFC91 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFCBCFEAF8951EFD5CF01AA5 /* Pods-LiveGQL-LiveGQL-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -471,12 +571,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.florian.LiveGQL-iOS";
 				PRODUCT_NAME = LiveGQL;
@@ -487,6 +585,7 @@
 		};
 		D2B7E5F61F12C6FB00FCFC91 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F778D89B75FC9213C252E3A0 /* Pods-LiveGQL-LiveGQL-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -494,12 +593,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.florian.LiveGQL-iOS";
 				PRODUCT_NAME = LiveGQL;
@@ -596,6 +693,7 @@
 		};
 		D2B7E64A1F12CDD000FCFC91 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6DA4541A832E33D47CB81C1 /* Pods-LiveGQL-LiveGQL-macOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -622,6 +720,7 @@
 		};
 		D2B7E64B1F12CDD000FCFC91 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0FB92F6F474B95BB179E19 /* Pods-LiveGQL-LiveGQL-macOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
