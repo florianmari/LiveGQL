@@ -21,14 +21,14 @@ open class LiveGQL: NSObject {
             self.initServer(connectionParams: self.params, reconnect: self.reconnect)
         }
     }
-
-    public required init(socket url: String) {
-        socket = SRWebSocket(url: URL(string: url)!, protocols: ["graphql-ws"])
+    
+    public required init(socket url: String, protocol graphql: String = "graphql-subscriptions") {
+        socket = SRWebSocket(url: URL(string: url)!, protocols: [graphql])
         super.init()
         socket.delegate = self
         socket.open()
     }
-
+    
     fileprivate func serverMessageHandler(_ message: String) {
         if let obj = message.data(using: String.Encoding.utf8, allowLossyConversion: false) {
             do {
@@ -51,7 +51,7 @@ open class LiveGQL: NSObject {
                     verbosePrint("Ping by server.")
                 case MessageTypes.GQL_DATA.rawValue:
                     delegate?.receivedRawMessage(text: message)
-                    // self.delegate?.receiveDictMessage!(dict: dict)
+                // self.delegate?.receiveDictMessage!(dict: dict)
                 case MessageTypes.GQL_ERROR.rawValue:
                     print("LiveGQL: Error return")
                     print(message)
@@ -65,7 +65,7 @@ open class LiveGQL: NSObject {
             }
         }
     }
-
+    
     public func initServer(connectionParams params: [String: Any]?, reconnect: Bool?) {
         if let reconnect = reconnect {
             if reconnect {
@@ -81,7 +81,7 @@ open class LiveGQL: NSObject {
             sendRaw(serializedMessage)
         }
     }
-
+    
     fileprivate func reconnectInit() {
         let unserializedMessage = InitOperationMessage(
             payload: params,
@@ -91,7 +91,7 @@ open class LiveGQL: NSObject {
             sendRaw(serializedMessage)
         }
     }
-
+    
     public func subscribe(graphql query: String, variables: [String: String]?, operationName: String?, identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: query,
@@ -102,7 +102,7 @@ open class LiveGQL: NSObject {
         )
         self.sendMessage(unserializedMessage)
     }
-
+    
     public func unsubscribe(subscribtion identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: nil,
@@ -113,7 +113,7 @@ open class LiveGQL: NSObject {
         )
         self.sendMessage(unserializedMessage)
     }
-
+    
     public func closeConnection() {
         reconnect = false
         let unserializedMessage = OperationMessage(
@@ -125,13 +125,13 @@ open class LiveGQL: NSObject {
         )
         self.sendMessage(unserializedMessage)
     }
-
+    
     private func verbosePrint(_ message: String) {
         if verbose {
             print(message)
         }
     }
-
+    
     private func sendMessage(_ message: OperationMessage) {
         if let final = message.toJSON() {
             sendRaw(final)
@@ -139,15 +139,15 @@ open class LiveGQL: NSObject {
             print("Error while send message")
         }
     }
-
+    
     fileprivate func sendRaw(_ message: String) {
         socket.readyState == SRReadyState.OPEN ? socket.send(message) : queue.append(message)
     }
-
+    
     public func isConnected() -> Bool {
         return socket.readyState == SRReadyState.OPEN
     }
-
+    
     deinit {
         self.socket.close()
         self.socket.delegate = nil
@@ -163,13 +163,13 @@ extension LiveGQL: SRWebSocketDelegate {
         sendRaw(queue[0])
         queue.remove(at: 0)
     }
-
+    
     public func webSocket(_: SRWebSocket!, didCloseWithCode _: Int, reason _: String!, wasClean _: Bool) {
         if reconnect {
             socket.open()
         }
     }
-
+    
     public func webSocket(_: SRWebSocket!, didReceiveMessage message: Any!) {
         serverMessageHandler(String(describing: message!))
     }
@@ -179,3 +179,4 @@ extension LiveGQL: SRWebSocketDelegate {
     func receivedRawMessage(text: String)
     @objc optional func receiveDictMessage(dict: [String: Any]?)
 }
+
