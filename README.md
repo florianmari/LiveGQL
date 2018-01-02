@@ -13,7 +13,8 @@ The Android version is [here](https://github.com/billybichon/liveGQL)
 - [Communication](#communication)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Bugs](#bugs)
+- [What's new?](#news)
+- [Contributors](#contributors)
 
 ## Features
 
@@ -26,16 +27,16 @@ The Android version is [here](https://github.com/billybichon/liveGQL)
 - [x] Reconnect option
 - [x] JSON raw response
 - [x] Queue of unsent messages
-- [x] Implement all Apollo protocol (today just Client part totally implemented)
-- [ ] Next: Swift 4 update with native JSON Encoder/Decoder
+- [x] Implement all Apollo protocol
+- [x] Specify entry protocol
 
 ## Requirements
 
-- iOS 9.0 / tvOS 9.0
+- iOS / tvOS >= 9.0
 - Xcode >= 8.1
 - Swift >= 3.0
 
-We also use [Starscream](https://github.com/daltoniam/Starscream) and [JSONCodable](https://github.com/matthewcheok/JSONCodable), thanks to them
+We also use [SocketRocket](https://github.com/facebook/SocketRocket) and [JSONCodable](https://github.com/matthewcheok/JSONCodable), thanks to them
 
 ## Communication
 
@@ -52,7 +53,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiveGQL', '~> 1.1.2'
+    pod 'LiveGQL', '~> 2.0.0'
 end
 ```
 
@@ -84,6 +85,12 @@ gql.initServer(connectionParams: nil, reconnect: true)
 ```
 
 You can set a Dictionnary[String:String] as connectionParams like for authentification by example.
+The default protocol is now: graphql-subscriptions, but you can specify yours this way
+
+```swift
+import LiveGQL
+let gql = LiveGQL(socket: "ws://localhost:7003/feedback", protocol: "graphql-subscriptions")
+```
 
 ### Subscribe / Unsubscribe
 
@@ -93,6 +100,12 @@ Just call subscribe method, set an identifier and your subscription query as wel
 
 ```swift
 gql.subscribe(graphql: "subscription {feedbackAdded {id, text}}", identifier: "feed")
+```
+
+These parameters are mandatory but you can specify exposed variables and operation names if you want, look at the signature:
+
+```swift
+public func subscribe(graphql query: String, variables: [String: String]?, operationName: String?, identifier: String) {}
 ```
 
 ##### Treat server response
@@ -131,6 +144,17 @@ gql.unsubscribe(identifier: "feed")
 gql.closeConnection()
 ```
 
-## Bugs
+## What's new?
+
+### 2.0.0
+In this second version of LiveGQL, we give up Starscream for using SocketRocket from Facebook, as well, the protocol has been fixed and you can specify yours!
+
+## Contributors
+
+I'd like to thanks these people for their contributions:
+
+[@rhishikeshj] for cleaning the code and implement SocketRocket!
+[@duncsand] for adding exposed variables and operationName on subscription call
+[@josefdolezal] for giving us Carthage support!
 
 
