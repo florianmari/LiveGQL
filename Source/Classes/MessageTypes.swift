@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+/// All Apollo PROTOCOL Message types
 enum MessageTypes: String {
     case GQL_CONNECTION_INIT = "connection_init",
         GQL_CONNECTION_ACK = "connection_ack",

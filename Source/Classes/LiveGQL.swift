@@ -22,6 +22,12 @@ open class LiveGQL: NSObject {
         }
     }
 
+    
+    /// This function init the socket server with a default protocol "graphql-subscriptions"
+    ///
+    /// - Parameters:
+    ///   - url: the url of your websocket (mandatory)
+    ///   - graphql: the protocol you want to use (optional)
     public required init(socket url: String, protocol graphql: String = "graphql-subscriptions") {
         socket = SRWebSocket(url: URL(string: url)!, protocols: [graphql])
         super.init()
@@ -29,6 +35,10 @@ open class LiveGQL: NSObject {
         socket.open()
     }
 
+    
+    /// This function treats the server response and send to the delegate the raw text
+    ///
+    /// - Parameter message: raw message from the server
     fileprivate func serverMessageHandler(_ message: String) {
         if let obj = message.data(using: String.Encoding.utf8, allowLossyConversion: false) {
             do {
@@ -66,6 +76,12 @@ open class LiveGQL: NSObject {
         }
     }
 
+    
+    /// Send init message to the server and manage the reconnect feature
+    ///
+    /// - Parameters:
+    ///   - params: Eventually parameters such login...
+    ///   - reconnect: true or false in case of failure
     public func initServer(connectionParams params: [String: Any]?, reconnect: Bool?) {
         if let reconnect = reconnect {
             if reconnect {
@@ -82,6 +98,8 @@ open class LiveGQL: NSObject {
         }
     }
 
+    
+    /// Reconnect function
     fileprivate func reconnectInit() {
         let unserializedMessage = InitOperationMessage(
             payload: params,
@@ -92,6 +110,14 @@ open class LiveGQL: NSObject {
         }
     }
 
+    
+    /// Use for subscribe to a query and receive the realtime updates
+    ///
+    /// - Parameters:
+    ///   - query: your GraphQL query
+    ///   - variables: Differents variables (optional)
+    ///   - operationName: OperationName if needed (optional)
+    ///   - identifier: Identifier of your query
     public func subscribe(graphql query: String, variables: [String: String]?, operationName: String?, identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: query,
@@ -103,6 +129,10 @@ open class LiveGQL: NSObject {
         sendMessage(unserializedMessage)
     }
 
+    
+    /// Unsubscribe to your GraphQL subscription
+    ///
+    /// - Parameter identifier: Use your query identifier to subscribe
     public func unsubscribe(subscribtion identifier: String) {
         let unserializedMessage = OperationMessage(
             payload: Payload(query: nil,
@@ -114,6 +144,8 @@ open class LiveGQL: NSObject {
         sendMessage(unserializedMessage)
     }
 
+    
+    /// Close the Socket connection
     public func closeConnection() {
         reconnect = false
         let unserializedMessage = OperationMessage(
@@ -126,12 +158,20 @@ open class LiveGQL: NSObject {
         sendMessage(unserializedMessage)
     }
 
+    
+    /// Display verbose if enabled
+    ///
+    /// - Parameter message: LiveGQL internal message
     private func verbosePrint(_ message: String) {
         if verbose {
             print(message)
         }
     }
 
+    
+    /// Send message to server
+    ///
+    /// - Parameter message: OperationMessage
     private func sendMessage(_ message: OperationMessage) {
         if let final = message.toJSON() {
             sendRaw(final)
@@ -140,10 +180,18 @@ open class LiveGQL: NSObject {
         }
     }
 
+    
+    /// Send raw message to the server
+    ///
+    /// - Parameter message: string message to send
     fileprivate func sendRaw(_ message: String) {
         socket.readyState == SRReadyState.OPEN ? socket.send(message) : queue.append(message)
     }
 
+    
+    /// Get the state of the connection
+    ///
+    /// - Returns: bool
     public func isConnected() -> Bool {
         return socket.readyState == SRReadyState.OPEN
     }
@@ -154,6 +202,8 @@ open class LiveGQL: NSObject {
     }
 }
 
+
+// MARK: - SRWebSocket implementation
 extension LiveGQL: SRWebSocketDelegate {
     public func webSocketDidOpen(_: SRWebSocket!) {
         stateConnect = true
@@ -175,6 +225,7 @@ extension LiveGQL: SRWebSocketDelegate {
     }
 }
 
+// MARK: - Delegate methods
 @objc public protocol LiveGQLDelegate: class {
     func receivedRawMessage(text: String)
     @objc optional func receiveDictMessage(dict: [String: Any]?)
