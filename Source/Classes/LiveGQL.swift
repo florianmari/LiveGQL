@@ -34,7 +34,22 @@ open class LiveGQL: NSObject {
         socket.delegate = self
         socket.open()
     }
-
+    
+    
+    /// This function init the socket server with a default protocol "graphql-subscriptions"
+    ///
+    /// - Parameters:
+    ///   - request: the UrlRequest of your websocket (mandatory)
+    ///   - graphql: the protocol you want to use (optional)
+    public required init(with urlRequest: URLRequest, protocol graphql: String = "graphql-subscriptions") {
+        socket = SRWebSocket(urlRequest:urlRequest, protocols: [graphql])
+        super.init()
+        socket.delegate = self
+        socket.open()
+    }
+    
+    
+    
     
     /// This function treats the server response and send to the delegate the raw text
     ///
